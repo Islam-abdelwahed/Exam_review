@@ -5,6 +5,6 @@
     <string name="login">تسجيل الدخول</string>
     <string name="send_request">إرسال طلب مراجعة</string>
     <string name="send">إرسال</string>
-    <string name="cancel">إالغاء</string>
+    <string name="cancel">إلغاء</string>
     <string name="message">هل أنت متاكد من انك تريد إرسال طلب مراجعة؟</string>
 </resources>

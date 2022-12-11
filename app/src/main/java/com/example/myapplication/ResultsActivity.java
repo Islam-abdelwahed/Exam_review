@@ -76,8 +76,8 @@ public class ResultsActivity extends AppCompatActivity {
                             // Create a renderer for the document
                             PDFRenderer renderer = new PDFRenderer(document);
                             // Render the image to an RGB Bitmap
-                            Bitmap pageImage1 = renderer.renderImage(page1, 1, ImageType.RGB);
-                            Bitmap pageImage2 = renderer.renderImage(page1+1, 1, ImageType.RGB);
+                            Bitmap pageImage1 = renderer.renderImage(page1, 2, ImageType.RGB);
+                            Bitmap pageImage2 = renderer.renderImage(page1+1, 2, ImageType.RGB);
                             //---- will add the equation to get 2 pages for student ----//
                             // Save the render result to an image
                             String path = root.getAbsolutePath() + "/render.jpg";
