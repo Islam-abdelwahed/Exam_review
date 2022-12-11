@@ -1,14 +1,21 @@
 package com.example.myapplication;
 
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.tom_roush.pdfbox.android.PDFBoxResourceLoader;
@@ -21,9 +28,11 @@ import java.io.IOException;
 
 public class ResultsActivity extends AppCompatActivity {
     ImageButton im;
+    Button sr;
     File root;
     AssetManager assetManager;
     ImageView fp,sp;
+    ProgressBar p;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -35,10 +44,23 @@ public class ResultsActivity extends AppCompatActivity {
         fp = findViewById(R.id.first_page);
         sp = findViewById(R.id.second_page);
         im=findViewById(R.id.imageButton);
+        sr=findViewById(R.id.send_req);
         root = getApplicationContext().getCacheDir();
         assetManager = getAssets();
+        p=findViewById(R.id.progressBar);
         PDFBoxResourceLoader.init(getApplicationContext());
 
+        sr.setOnClickListener(v->{
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle((R.string.send_request));
+            builder.setMessage(R.string.message);
+            builder.setPositiveButton(getString(R.string.send), (dialogInterface, i) -> {
+                finish();
+            });
+            builder.setNegativeButton(getString(R.string.cancel), (dialogInterface, i) -> {
+                dialogInterface.dismiss();
+            }).show();
+        });
         im.setOnClickListener(v -> finish());
         Intent intent = getIntent();
         String uni = intent.getStringExtra("uni");
@@ -67,13 +89,15 @@ public class ResultsActivity extends AppCompatActivity {
                             // Optional: display the render result on screen
                             fp.setImageBitmap(pageImage1);
                             sp.setImageBitmap(pageImage2);
+                            p.setVisibility(View.GONE);
                             } catch (IOException e) {
                             e.printStackTrace();
                         }
                     }).addOnFailureListener(e -> {
-
+                        Toast.makeText(this, "Fail", Toast.LENGTH_SHORT).show();
                     });
         } catch (IOException e) {
+            Toast.makeText(this, "Fail", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }

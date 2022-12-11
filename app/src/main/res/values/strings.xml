@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Exam Review</string>
     <string name="label">University Code</string>
+    <string name="login">Log in</string>
+    <string name="send_request">Send Request</string>
+    <string name="send">Send</string>
+    <string name="cancel">Cancel</string>
+    <string name="message">Are you sure you want to send review request?</string>
 </resources>
