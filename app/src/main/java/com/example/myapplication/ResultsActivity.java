@@ -65,7 +65,7 @@ public class ResultsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String uni = intent.getStringExtra("uni");
         int page1= Integer.parseInt(uni);
-        StorageReference mStorageReference = FirebaseStorage.getInstance().getReference().child("exams/Maths Summary.PDF");
+        StorageReference mStorageReference = FirebaseStorage.getInstance().getReference().child("exams/AI midterm 2021-2022.pdf");
         try {
 
             final File localfile = File.createTempFile("temp","pdf");
@@ -76,8 +76,8 @@ public class ResultsActivity extends AppCompatActivity {
                             // Create a renderer for the document
                             PDFRenderer renderer = new PDFRenderer(document);
                             // Render the image to an RGB Bitmap
-                            Bitmap pageImage1 = renderer.renderImage(page1, 2, ImageType.RGB);
-                            Bitmap pageImage2 = renderer.renderImage(page1+1, 2, ImageType.RGB);
+                            Bitmap pageImage1 = renderer.renderImage(page1, 1, ImageType.RGB);
+                            Bitmap pageImage2 = renderer.renderImage(page1+1, 1, ImageType.RGB);
                             //---- will add the equation to get 2 pages for student ----//
                             // Save the render result to an image
                             String path = root.getAbsolutePath() + "/render.jpg";
