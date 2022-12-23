@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Exam Review</string>
-    <string name="label">الكود الجماعى</string>
+    <string name="label">الكود الجامعى</string>
     <string name="login">تسجيل الدخول</string>
     <string name="send_request">إرسال طلب مراجعة</string>
     <string name="send">إرسال</string>
