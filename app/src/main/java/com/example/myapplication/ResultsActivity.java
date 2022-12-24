@@ -7,11 +7,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.android.volley.toolbox.ImageRequest;
+import com.squareup.picasso.Picasso;
 
 public class ResultsActivity extends AppCompatActivity {
     ImageButton im;
@@ -30,7 +28,6 @@ public class ResultsActivity extends AppCompatActivity {
         im=findViewById(R.id.imageButton);
         sr=findViewById(R.id.send_req);
         p=findViewById(R.id.progressBar);
-
         sr.setOnClickListener(v->{
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle((R.string.send_request));
@@ -38,14 +35,12 @@ public class ResultsActivity extends AppCompatActivity {
             builder.setPositiveButton(getString(R.string.send), (dialogInterface, i) -> finish());
             builder.setNegativeButton(getString(R.string.cancel), (dialogInterface, i) -> dialogInterface.dismiss()).show();
         });
-
         im.setOnClickListener(v -> finish());
-
         Intent intent = getIntent();
         String uni = intent.getStringExtra("uni");
-
-
-        String URL = "http://192.168.1.3/test/55_1.png";
-        ImageRequest imageRequest = new ImageRequest(URL, response -> fp.setImageBitmap(response), 200, 200, null, null);
+        Picasso.get()
+                .load("https://th.bing.com/th/id/R.90b8a5e2f957f1050def1700842d8a53?rik=e5bWH%2bIpe7d4OQ&pid=ImgRaw&r=0")
+                .into(fp);
+        Picasso.get().load("http://192.168.1.2/img.png").into(sp);
     }
 }
